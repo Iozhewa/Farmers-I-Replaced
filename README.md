@@ -5,7 +5,8 @@ Imagine liking a game so much you blog about it...
 __Table of Contents__
 1. [Bulding Blocks (Singular Code)](#building-blocks)
 2. [Delegations (First Modules)](#delegations)
-3. [Sunflowers and Pumpkins (working title)](#sunflowers-and-pumpkins)
+3. [Sunflowers and Pumpkins](#sunflowers-and-pumpkins)
+4. [Polyculture](#polyculture)
 
 ## Building Blocks
 See [farmer01](save02\farmer01) for the chapter package.
@@ -544,3 +545,91 @@ farm_pumpkin(1100) # 8 carrot = 1 pumpkin
 
 pet_the_piggy()
 ```
+
+### Unlocking `polyculture`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_hay(2*10**4)
+farm_tree(2*10**4)
+farm_carrot(200)
+farm_sunflower(200)
+farm_carrot(2*10**4)
+farm_pumpkin(2.5*10**3)
+
+pet_the_piggy()
+```
+## Interlude, leading to Polyculture
+### Unlocking `dictionaries`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_pumpkin(2.5*10**3)
+
+pet_the_piggy()
+```
+### Unlocking `cactus`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_pumpkin(5*10**3)
+
+pet_the_piggy()
+```
+### Unlocking `costs`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_pumpkin(2.5*10**3)
+
+pet_the_piggy()
+```
+### Unlocking `auto-unlock`
+__main__
+``` python
+...
+
+
+do_a_flip()
+
+goto()
+farm_pumpkin(5*10**3)
+
+pet_the_piggy()
+```
+### Unlocking `expand (VI)`
+__main__
+``` python
+...
+
+
+do_a_flip()
+
+goto()
+farm_carrot(200)
+farm_sunflower(200)  # Charging
+farm_hay(2.4*10**4)
+farm_tree(2*10**4)
+farm_bush(400)
+farm_carrot(2.4*10**4)  # Supplying
+farm_pumpkin(8*10**3)  # Farming
+
+pet_the_piggy()
+```
+## Polyculture
