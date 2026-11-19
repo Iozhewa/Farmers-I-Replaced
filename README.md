@@ -118,10 +118,7 @@ pet_the_piggy()
 ### Unlocking `speed (III)`
 __main__
 ``` python
-from movement import goto
-from hay import farm_hay
-from bushes import farm_bush
-from carrots import farm_carrot
+...
 
 do_a_flip()
 
@@ -134,10 +131,7 @@ pet_the_piggy()
 ### Unlocking `trees (I)`
 __main__
 ``` python
-from movement import goto
-from hay import farm_hay
-from bushes import farm_bush
-from carrots import farm_carrot
+...
 
 do_a_flip()
 
@@ -148,7 +142,7 @@ farm_carrot(80)  # Utilizing the 1:1:1 ratio for 30 banked crop, each
 
 pet_the_piggy()
 ```
-### Unlocking `watering ()`
+### Unlocking `watering (II)`
 __main__
 ``` python
 from movement import goto
@@ -164,6 +158,74 @@ goto(0, 0)
 #farm_bush(80)
 #farm_carrot(80)
 farm_tree(200)
+
+pet_the_piggy()
+```
+### Unlocking `expand (IV)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+# 100 wood, 50 carrot
+# 130 wood, 80 carrot
+goto(0, 0)
+farm_hay(80)
+farm_bush(30)
+farm_carrot(80)
+farm_tree(100)
+
+pet_the_piggy()
+```
+### Unlocking `grass (II)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+farm_hay(360)
+
+pet_the_piggy()
+```
+### Unlocking `carrots (II)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+farm_tree(200)  # Good test of overflow
+farm_bush(280)
+
+pet_the_piggy()
+```
+### Unlocking `grass (III)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+farm_tree(400)  # Good test of overflow
+farm_bush(580)
+
+pet_the_piggy()
+```
+
+### Unlocking `trees ()`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+farm_hay(380)
 
 pet_the_piggy()
 ```
