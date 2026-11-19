@@ -5,7 +5,7 @@ Imagine liking a game so much you blog about it...
 __Table of Contents__
 1. [Bulding Blocks (Singular Code)](#building-blocks)
 2. [Delegations (First Modules)](#delegations)
-3. [Sunflowers and Pumpkins (working title](#sunflowers-and-pumpkins)
+3. [Sunflowers and Pumpkins (working title)](#sunflowers-and-pumpkins)
 
 ## Building Blocks
 See [farmer01](save02\farmer01) for the chapter package.
@@ -342,6 +342,205 @@ do_a_flip()
 
 goto()
 farm_tree(880)
+
+pet_the_piggy()
+```
+### Unlocking `IV)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_tree(2400)
+farm_bush(2580)
+
+pet_the_piggy()
+```
+### Unlocking `trees (IV)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_hay(4880)
+
+pet_the_piggy()
+```
+### Unlocking `carrots (IV)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_tree(6000)
+farm_bush(6300)
+
+pet_the_piggy()
+```
+### Unlocking `watering (IV)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_tree(3000)
+farm_bush(3300)
+
+pet_the_piggy()
+```
+### Unlocking `watering (V)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_tree(10000)
+farm_bush(13000)
+
+pet_the_piggy()
+```
+### Unlocking `trees (V)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_hay(2*10**4)
+
+pet_the_piggy()
+```
+### Unlocking `grass (IV)`, `fertilizer (I)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_tree(10**4)
+farm_bush(1.3*10**4)
+
+pet_the_piggy()
+```
+### Unlocking `fertilizer (II)`, `fertilizer (III)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_tree(10**3)
+farm_bush(1600)
+
+pet_the_piggy()
+```
+
+_later_
+
+__main__
+``` python
+do_a_flip()
+
+goto()
+farm_tree(9000)
+farm_bush(10**4)
+
+pet_the_piggy()
+```
+
+### Unlocking `pumpkins (I)`, `pumpkins (II)`, `pumpkins (III)`, `pumpkins (IV)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_carrot(1000)
+farm_sunflower(100)  # Charging on the side
+
+pet_the_piggy()
+```
+_later_
+
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_carrot(1300)
+
+pet_the_piggy()
+```
+_later_
+
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_hay(4300)
+farm_tree(4000)
+farm_bush(4300)
+farm_carrot(4300)
+
+pet_the_piggy()
+```
+_later_
+
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()  # Note whenever power ran out, all you need is to reboot main and get 100 power
+farm_sunflower(100)
+farm_hay(16*10**3)  # This is ignored if the quota is satisfied
+farm_tree(10**4)
+farm_bush(16*10**3)
+farm_carrot(16*10**3)
+
+pet_the_piggy()
+```
+
+### Unlocking `expand (V)`, `utilities`, `timing`
+__main__
+``` python
+from movement import goto
+from hay import farm_hay
+from bushes import farm_bush
+from carrots import farm_carrot
+from trees import farm_tree
+from sunflowers import farm_sunflower
+from pumpkins import farm_pumpkin
+
+do_a_flip()
+
+goto()
+farm_hay(9000)
+farm_tree(9000)
+farm_carrot(100)  
+farm_sunflower(100) # 1 carrot = 1 sunflower
+farm_carrot(9000) # 1 hay + 1 wood = 1 carrot
+farm_pumpkin(1100) # 8 carrot = 1 pumpkin
 
 pet_the_piggy()
 ```

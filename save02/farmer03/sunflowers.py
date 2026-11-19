@@ -1,23 +1,26 @@
 from movement import goto
 
 def myMax(a, b):
-	if a >= b:
+	if a[2] >= b[2]:
 		return a
 	return b
 
 def maxP(petals):  # Works for non-empty lists
-	rest = petals
-	rest.pop(0)
-	if len(petals) == 1:
+	if len(petals) == 0:
+		return
+	elif len(petals) == 1:
 		return petals[0]
 	else:
+		rest = petals
+		rest.pop(0)
 		return myMax(petals[0], maxP(rest))
 
 def farm_sunflower(quota=800):
-	while num_items(Items.Power) < 200:
+	change_hat(Hats.Traffic_Cone)
+	while num_items(Items.Power) < quota:
 		if num_items(Items.Carrot) < 1:
 			print("Exhausted input!")
-			break
+			return
 		
 		for _ in range(get_world_size()):
 			for _ in range(get_world_size()):
@@ -31,6 +34,8 @@ def farm_sunflower(quota=800):
 					use_item(Items.Water)
 			move(East)
 			
+		if (num_items(Items.Power)) >= quota:
+			return
 		petals = []  # List of [x, y, petal]
 		for x in range(get_world_size()):
 			for y in range(get_world_size()):
@@ -41,9 +46,7 @@ def farm_sunflower(quota=800):
 			move(East)
 		quick_print(".")
 		
-		while len(petals) > 0:
-			if (num_items(Items.Power)) < quota:
-				break
+		for _ in petals:
 			x, y, metric = maxP(petals)
 			quick_print(petals)
 			goto(x, y)
