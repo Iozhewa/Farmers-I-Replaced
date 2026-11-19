@@ -5,8 +5,11 @@ Imagine liking a game so much you blog about it...
 __Table of Contents__
 1. [Bulding Blocks (Singular Code)](#building-blocks)
 2. [Delegations (First Modules)](#delegations)
+3. [Sunflowers and Pumpkins (working title](#sunflowers-and-pumpkins)
 
 ## Building Blocks
+See [farmer01](save02\farmer01) for the chapter package.
+
 __Hat__: Straw
 ### Unlocking `while`
 No loops, no recursions here. Just a gross amount of duplicated code :]
@@ -95,8 +98,11 @@ while num_items(Items.Carrot) < 50:
 	move(East)
 pet_the_piggy()
 ```
+---
 ## Delegations
 At this point, the same bit of code needs just a few tweaks to focus on Hay, Wood, and Carrots. We can get a `Main` program to access `CarrotFarmer`, `BushFarmer`, `HayFarmer`, of some `Farmer` abstraction.
+
+Well, this much abstraction would be great with Object-Oriented Programming. But if _The Farmer Was Replaced_ is anything, it's restrictive. See [farmer02](save02\farmer02) for the chapter package.
 
 ### Unlocking `expand (III)`
 __main__
@@ -216,8 +222,7 @@ farm_bush(580)
 
 pet_the_piggy()
 ```
-
-### Unlocking `trees ()`
+### Unlocking `trees (II)`
 __main__
 ``` python
 ...
@@ -226,6 +231,117 @@ do_a_flip()
 
 goto(0, 0)
 farm_hay(380)
+
+pet_the_piggy()
+```
+### Unlocking `speed (IV)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+farm_hay(580)
+farm_tree(400)
+farm_bush(580)
+farm_carrot(580)
+
+pet_the_piggy()
+```
+### Final speed upgrade! `speed (v)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+farm_hay(1080)
+farm_tree(850)
+farm_bush(1080)
+farm_carrot(1080)
+
+pet_the_piggy()
+```
+### Unlocking `sunflower (I)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+farm_hay(580)
+farm_tree(400)
+farm_bush(580)
+farm_carrot(580)
+
+pet_the_piggy()
+```
+### Unlocking `lists`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+farm_hay(580)
+farm_tree(400)
+farm_bush(580)
+farm_carrot(580)
+
+pet_the_piggy()
+```
+---
+## Sunflowers and Pumpkins
+See [farmer03](save02\farmer03) for the chapter package.
+
+### Unlocking `trees (III)`
+__main__
+``` python
+from movement import goto
+from hay import farm_hay
+from bushes import farm_bush
+from carrots import farm_carrot
+from trees import farm_tree
+from sunflower import farm_sunflower
+
+do_a_flip()
+
+goto()
+farm_tree(1300)
+farm_carrot(1300)
+farm_sunflower(1300)
+farm_hay(1300)
+
+pet_the_piggy()
+```
+### Unlocking `carrots (III)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_tree(1300)
+farm_carrot(1300)
+farm_sunflower(1300)
+farm_bush(1300)
+
+pet_the_piggy()
+```
+### Unlocking `watering (III)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto()
+farm_tree(880)
 
 pet_the_piggy()
 ```
