@@ -633,3 +633,24 @@ farm_pumpkin(8*10**3)  # Farming
 pet_the_piggy()
 ```
 ## Polyculture
+
+(`carrots (V)` was unlocked during experiments)
+(`watering (VI)` was unlocked during experiments)
+
+### Final Fertilizer Upgrade!
+__main__
+``` python
+from movement import goto, rotation
+from setups import *
+from poly import poly_farm
+
+do_a_flip()
+
+goto(0, 0)
+cycle(deplow)
+while num_items(Items.Wood) < 5.4*10**4:
+	poly_farm(Entities.Bush)
+	cycle(collect)
+
+pet_the_piggy()
+```
