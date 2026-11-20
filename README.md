@@ -7,6 +7,8 @@ __Table of Contents__
 2. [Delegations (First Modules)](#delegations)
 3. [Sunflowers and Pumpkins](#sunflowers-and-pumpkins)
 4. [Polyculture](#polyculture)
+5. [Descending (Mining)](#descending)
+6. [Prospecting](#prospecting)
 
 ## Building Blocks
 See [farmer01](save02\farmer01) for the chapter package.
@@ -576,7 +578,7 @@ farm_pumpkin(2.5*10**3)
 
 pet_the_piggy()
 ```
-### Unlocking `cactus`
+### Unlocking `cactus (I)`
 __main__
 ``` python
 ...
@@ -634,7 +636,7 @@ pet_the_piggy()
 ```
 ## Polyculture
 
-(`carrots (V)` was unlocked during experiments)
+(`carrots (V)` was unlocked during experiments)<br>
 (`watering (VI)` was unlocked during experiments)
 
 ### Final Fertilizer Upgrade!
@@ -654,3 +656,163 @@ while num_items(Items.Wood) < 5.4*10**4:
 
 pet_the_piggy()
 ```
+### Unlocking `pumpkins (V)`
+__main__
+``` python
+from movement import goto, rotation
+from setups import *
+from poly import poly_farm
+from sunflowers import farm_sunflower
+from pumpkins import farm_pumpkin
+
+do_a_flip()
+
+goto(0, 0)
+cycle(collect)
+farm_sunflower()
+while num_items(Items.Carrot) < 7*10**4:
+	poly_farm(Entities.Carrot, 7*10**4)
+
+pet_the_piggy()
+```
+### Unlocking `cactus (II)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+cycle(collect)
+while num_items(Items.Pumpkin) < 2.1*10**4:
+	if num_items(Items.Carrot) < 5*10**3:
+		poly_farm(Entities.Carrot, 10**4)
+	if num_items(Items.Power) < 1:
+		farm_sunflower()
+	farm_pumpkin(num_items(Items.Pumpkin)+100)
+
+pet_the_piggy()
+```
+### Unlocking `expand (VII)`, `grass (V)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+cycle(collect)
+while num_items(Items.Pumpkin) < 6.4*10**4:
+	if num_items(Items.Power) < 1:
+		farm_sunflower()
+	if num_items(Items.Carrot) < 5*10**3:
+		poly_farm(Entities.Carrot, 10**4)
+	farm_pumpkin(num_items(Items.Pumpkin)+100)
+
+pet_the_piggy()
+```
+### Unlocking `trees (VI)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+cycle(collect)
+while num_items(Items.Hay) < 8*10**4:
+	poly_farm(Entities.Grass, 8*10**4)
+
+	if num_items(Items.Power) < 1:
+		farm_sunflower()
+	if num_items(Items.Carrot) < 5*10**3:
+		poly_farm(Entities.Carrot, 10**4)
+
+pet_the_piggy()
+```
+## Descending
+(`mining (I)` was unlocked during experiments)
+
+### Unlocking `mining (II)`
+__main__
+``` python
+from movement import *
+from setups import *
+
+def powerset_2(a, b):
+	result = []
+	for x in (a, b):
+		for y in (a, b):
+			spot = (x, y)
+			result.append(spot)
+	return result
+
+do_a_flip()
+
+goto()
+clear()
+for i in range(5, 7):
+	corner_set = powerset_2(i, get_world_size()-i)
+	for coord in corner_set:
+		print(coord)
+		goto(coord[0], coord[1])
+		for _ in range(0, 3):
+			dig()
+
+pet_the_piggy()
+```
+### Unlocking `Underground Senses`, `coal (I)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+while num_items(Items.Block) < 50:
+	goto()
+	clear()
+	for i in range(1, 8):
+		corner_set = powerset_2(i, get_world_size()-i)
+		for coord in corner_set:
+			goto(coord[0], coord[1])
+			for _ in range(0, 3):
+				dig()
+
+pet_the_piggy()
+```
+### Unlocking `iron (I)`, `rice (I)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+while num_items(Items.Block) < 50:
+	goto()
+	clear()
+	for i in range(2, 8):
+		corner_set = powerset_2(i, get_world_size()-i)
+		for coord in corner_set:
+			goto(coord[0], coord[1])
+			for _ in range(0, 3):
+				dig()
+		cycle(coal)
+
+pet_the_piggy()
+```
+### Unlocking `Iron Prospcting`, `rice (II)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+clear()
+dig_block()
+dig_coal()
+#farm_rice()
+
+pet_the_piggy()
+```
+## Prospecting
