@@ -6,8 +6,9 @@ def collect():
 	if can_harvest() or dead:
 		harvest()
 
-def plow(preferred=Grounds.Soil):
-	collect()
+def plow(preferred=Grounds.Soil, strict=False):
+	if not(strict):
+		collect()
 	if get_ground_type() != preferred:
 		till()
 
@@ -27,10 +28,31 @@ def polyplant(partner=Entities.Grass):
 	elif partner == Entities.Tree:
 		plow(Grounds.Grassland)
 		plant(Entities.Tree)
+	elif partner == Entities.Sunflower:  # refactor
+		plow(Grounds.Soil)
+		plant(Entities.Sunflower)
+		water()
+	elif partner == Entities.Pumpkin:
+		plow(Grounds.Soil, True)
+		plant(Entities.Pumpkin)
+		water(0.2)
 	else:  # Implicitly carrot
 		plow(Grounds.Soil)
 		plant(Entities.Carrot)
 		water()
+
+def pluck(petals=11):
+	for _ in range(get_world_size()):
+		for _ in range(get_world_size()):
+			move(East)
+			if measure() == petals:
+				harvest()
+		move(North)
+
+def column_collect():
+	for _ in range(get_world_size()):
+		move(North)
+		collect()
 
 def cycle(request=simple):
 	for _ in range(get_world_size()):

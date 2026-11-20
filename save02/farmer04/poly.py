@@ -18,12 +18,23 @@ def visit(x=0, y=0):
 	while get_pos_y() != y:
 		move(directions[0])
 
+def itemOf(plant=Entities.Grass):
+	if plant == Entities.Grass:
+		return Items.Hay
+	if plant == Entities.Bush or plant == Entities.Tree:
+		return Items.Wood
+	if plant == Entities.Carrot:
+		return Items.Carrot
+	return  # Not sure what else to add
+
 def poly_farm(plant=Entities.Grass, quota=5.4*10**4):
+	if num_items(itemOf(plant)) >= quota:
+		return
 	for x in range(get_world_size()):
 		for y in range(get_world_size()):
 			visit(x, y)
-			if num_items(Entities.Grass) >= quota:
-				return
+			if num_items(itemOf(plant)) >= quota:
+				break
 			polyplant(plant)
 			companion, spot = get_companion()
 			if companion != None:
@@ -31,3 +42,5 @@ def poly_farm(plant=Entities.Grass, quota=5.4*10**4):
 				polyplant(companion)
 				visit(x, y)
 		move(North)
+		column_collect()
+	move(East)
