@@ -816,3 +816,24 @@ dig_coal()
 pet_the_piggy()
 ```
 ## Prospecting
+### Unlocking `mining (III)`, `coal (II)`, `rice (II)`, `bamboo (I)`, `bamboo (II)`, `petrified pumpkins (I)`, 
+__main__
+``` python
+from movement import goto, rotation
+from setups import *
+from poly import poly_farm
+from sunflowers import farm_sunflower
+from pumpkins import farm_pumpkin
+from mining import *
+
+do_a_flip()
+
+goto(0, 0)
+clear()
+dig_block()
+dig_coal()
+farm_rice()
+dig_iron(False)
+
+pet_the_piggy()
+```
