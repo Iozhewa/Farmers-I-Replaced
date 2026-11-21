@@ -40,7 +40,9 @@ def dig_coal():
 def farm_rice():
 	found_rock = False
 	while not(found_rock):
-		found_rock = found_rock or cycle(terrace)
+		goto(get_world_size()-1, get_world_size()-1)
+		found_rock = get_ground_type() == Grounds.Rock
+		#cycle(terrace)
 
 def dig_iron(withSearch=True):
 	if withSearch:

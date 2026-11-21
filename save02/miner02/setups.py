@@ -55,13 +55,12 @@ def column_collect():
 		collect()
 
 def terrace():
-	acceptable = Grounds.Dirt, Grounds.Dry_Rice_Terrace
+	acceptable = Grounds.Dirt, Grounds.Dry_Rice_Terrace, Grounds.Coal
 	collect()
-	if get_ground_type() in acceptable:
+	while get_ground_type() in acceptable:
 		dig()
 	if get_ground_type() == Grounds.Clay:
 		plant(Entities.Rice)
-	return get_ground_type() == Grounds.Rock
 
 def cycle(request=simple):
 	for _ in range(get_world_size()):

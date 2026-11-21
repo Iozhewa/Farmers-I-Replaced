@@ -348,7 +348,7 @@ farm_tree(880)
 
 pet_the_piggy()
 ```
-### Unlocking `IV)`
+### Unlocking `fertilizer (IV)`
 __main__
 ``` python
 ...
@@ -837,3 +837,20 @@ dig_iron(False)
 
 pet_the_piggy()
 ```
+### Unlocking `mining (IV)`, `coal (III)`, `rice (III)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+goto(0, 0)
+clear()
+dig_block()
+dig_coal()
+farm_rice()
+dig_iron()
+
+pet_the_piggy()
+```
+## Interlude, modularizing mining code
