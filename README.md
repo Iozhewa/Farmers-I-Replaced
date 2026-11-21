@@ -854,3 +854,103 @@ dig_iron()
 pet_the_piggy()
 ```
 ## Interlude, modularizing mining code
+(`jump` was unlocked during experiments)
+### Unlocking `iron (II)`, `rice (IV)`
+__main__
+``` python
+from coal import farm_coal
+
+do_a_flip()
+
+change_hat(Hats.Coal_Hat)
+farm_coal()
+
+pet_the_piggy()
+```
+### Unlocking `rice (V)`, `bamboo (III)`, `Special Soils`
+(`mining (V)`, `Colorful Blocks` was unlocked during experiments)
+
+__main__
+``` python
+from rice import farm_rice
+
+do_a_flip()
+
+change_hat(Hats.Rice_Hat)
+farm_rice()
+
+pet_the_piggy()
+```
+### Unlocking `iron (III)`
+__main__
+``` python
+do_a_flip()
+
+change_hat(Hats.Coal_Hat)
+farm_coal(True)
+
+pet_the_piggy()
+```
+### Unlocking `petrified pumpkins (I)`
+__main__
+``` python
+from setups import *
+from movement import *
+from coal import farm_coal
+from rice import farm_rice
+from iron import farm_iron
+
+do_a_flip()
+
+change_hat(Hats.Bucket)
+farm_iron(True)
+
+pet_the_piggy()
+```
+### Unlocking `quartz (I)`
+__main__
+``` python
+from setups import *
+from movement import *
+from coal import farm_coal
+from rice import farm_rice
+from iron import farm_iron
+
+do_a_flip()
+
+farm_coal(True)
+farm_iron()
+
+pet_the_piggy()
+```
+### Unlocking `mining ()`
+__main__
+``` python
+...
+
+do_a_flip()
+
+predicate = num_items(Items.Coal) >= 100
+while num_items(Items.Iron) < 70:
+	farm_coal(True, predicate)
+	farm_iron(False, 70)
+	clear()
+
+pet_the_piggy()
+```
+### Unlocking `quartz (II)`
+__main__
+``` python
+...
+
+do_a_flip()
+
+# had to manually adjust this
+predicate = num_items(Items.Coal) >= 100
+while num_items(Items.Iron) < 200:
+	farm_iron(False, 200)
+	farm_coal(True, predicate)
+	#clear()
+
+pet_the_piggy()
+```
