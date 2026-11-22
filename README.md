@@ -816,7 +816,7 @@ dig_coal()
 pet_the_piggy()
 ```
 ## Prospecting
-### Unlocking `mining (III)`, `coal (II)`, `rice (II)`, `bamboo (I)`, `bamboo (II)`, `petrified pumpkins (I)`, 
+### Unlocking `mining (III)`, `coal (II)`, `rice (III)`, `bamboo (I)`, `bamboo (II)`, `petrified pumpkins (I)`, 
 __main__
 ``` python
 from movement import goto, rotation
@@ -837,7 +837,7 @@ dig_iron(False)
 
 pet_the_piggy()
 ```
-### Unlocking `mining (IV)`, `coal (III)`, `rice (III)`
+### Unlocking `mining (IV)`, `coal (III)`, `rice (IV)`
 __main__
 ``` python
 ...
@@ -855,7 +855,7 @@ pet_the_piggy()
 ```
 ## Interlude, modularizing mining code
 (`jump` was unlocked during experiments)
-### Unlocking `iron (II)`, `rice (IV)`
+### Unlocking `iron (II)`, `rice (VI)`
 __main__
 ``` python
 from coal import farm_coal
@@ -867,7 +867,7 @@ farm_coal()
 
 pet_the_piggy()
 ```
-### Unlocking `rice (V)`, `bamboo (III)`, `Special Soils`
+### Unlocking `rice (VI)`, `bamboo (III)`, `Special Soils`
 (`mining (V)`, `Colorful Blocks` was unlocked during experiments)
 
 __main__
@@ -891,7 +891,7 @@ farm_coal(True)
 
 pet_the_piggy()
 ```
-### Unlocking `petrified pumpkins (I)`
+### Unlocking `petrified pumpkins (II)`
 __main__
 ``` python
 from setups import *
@@ -923,7 +923,7 @@ farm_iron()
 
 pet_the_piggy()
 ```
-### Unlocking `mining ()`
+### Unlocking `mining (VII)`
 __main__
 ``` python
 ...
@@ -951,6 +951,198 @@ while num_items(Items.Iron) < 200:
 	farm_iron(False, 200)
 	farm_coal(True, predicate)
 	#clear()
+
+pet_the_piggy()
+```
+### Unlocking `Pyramids`
+__bamboo__
+``` python
+from setups import *
+from movement import *
+
+heights = []
+def plant_bamboo():
+	goto()
+	for _ in range(get_world_size()):
+		move(North)
+		plow()
+		plant(Entities.Bamboo)
+		heights.append(measure())
+	move(East)
+
+def watch_bamboo():
+	start = get_time()
+	elapsed = get_time() - start
+	while elapsed < max(heights):
+		for _ in range(get_world_size()):
+			move(North)
+			collect()
+			plow()
+			plant(Entities.Carrot)
+			water()
+		elapsed = get_time() - start
+
+def trim_bamboo():
+	goto(1, 0)
+	refresh = []
+	for height in heights:
+		move(North)
+		hover(height)
+		move(West)
+		refresh.append(measure())
+		move(East)
+	global heights
+	heights = refresh
+	goto(1, 0)
+
+def reset_bamboo():
+	endpoint = get_world_size() - 1
+	goto(1, endpoint)
+	hover(0)
+	goto(0, endpoint)
+	goto()
+
+def farm_bamboo():
+	plant_bamboo()
+	while max(heights) < 18:
+		watch_bamboo()
+		trim_bamboo()
+	reset_bamboo()
+	
+if __name__ == "__main__":
+	reset_bamboo()
+	#farm_bamboo()
+```
+### Unlocking `petrified pumpkins (III)`
+__main__
+``` python
+from setups import *
+from movement import *
+from bamboo import farm_bamboo
+
+do_a_flip()
+
+while num_items(Items.Bamboo) < 4*10**4:
+	farm_bamboo()
+
+pet_the_piggy()
+```
+### Final Coal Upgrade! and Unlocking `rice (VII)`
+__main__
+``` python
+from setups import *
+from movement import *
+from rice import farm_rice
+
+do_a_flip()
+
+while num_items(Items.Rice) < 2*10**4:
+	goto()
+	clear()
+	farm_rice()
+
+pet_the_piggy()
+```
+### Unlocking `treasure map (I)`, `treasure map (II)`
+__main__
+``` python
+from setups import *
+from movement import *
+from bamboo import farm_bamboo, reset_bamboo
+
+do_a_flip()
+
+reset_bamboo()
+while num_items(Items.Bamboo) < 4.5*10**4:
+	farm_bamboo()
+
+pet_the_piggy()
+```
+### Unlocking `quartz (III)`
+__main__
+``` python
+from setups import *
+from movement import *
+from coal import farm_coal
+from iron import farm_iron
+
+do_a_flip()
+
+while num_items(Items.Iron) < 400:
+	farm_iron(400)
+	clear()
+	farm_coal()
+
+pet_the_piggy()
+```
+### Final quartz upgrade! Unlocking `Ore Boost`
+__main__
+``` python
+...
+
+do_a_flip()
+
+while num_items(Items.Iron) < 10**3:
+	farm_iron(10**3)
+	clear()
+	farm_coal()
+
+pet_the_piggy()
+```
+### Unlocking `mushroom (I)`, `treasure map (III)` and `treasure map (IV)`, `mining (VIII)`
+__main__
+``` python
+from setups import *
+from movement import *
+from coal import farm_coal
+from iron import farm_iron
+from quartz import farm_quartz
+
+do_a_flip()
+
+while num_items(Items.Quartz) < 60:
+	farm_quartz(60)
+	if num_items(Items.Iron) < 1:
+		farm_iron(100)
+	if num_items(Items.Coal) < 1:
+		clear()
+		farm_coal()
+
+pet_the_piggy()
+```
+### Unlocking `iron (IV)`
+__main__
+``` python
+from setups import *
+from movement import *
+from coal import farm_coal
+
+do_a_flip()
+
+while num_items(Items.Coal) < 600:
+	clear()
+	farm_coal()
+
+pet_the_piggy()
+```
+### Final treasure map upgrade!
+__main__
+``` python
+from setups import *
+from movement import *
+from coal import farm_coal
+from iron import farm_iron
+from quartz import farm_quartz
+
+do_a_flip()
+
+while num_items(Items.Quartz) < 700:
+	farm_quartz(700)
+	if num_items(Items.Iron) < 1:
+		farm_iron(100)
+	if num_items(Items.Coal) < 1:
+		clear()
+		farm_coal()
 
 pet_the_piggy()
 ```
