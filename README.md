@@ -954,7 +954,7 @@ while num_items(Items.Iron) < 200:
 
 pet_the_piggy()
 ```
-### Unlocking `Pyramids`
+### Unlocking `pyramids (I)`
 __bamboo__
 ``` python
 from setups import *
@@ -1143,6 +1143,138 @@ while num_items(Items.Quartz) < 700:
 	if num_items(Items.Coal) < 1:
 		clear()
 		farm_coal()
+
+pet_the_piggy()
+```
+### Unlocking `mazes (I)`
+__main__
+``` python
+from setups import *
+from movement import *
+
+def weird():
+	collect()
+	plant(Entities.Tree)
+	while not(can_harvest()):
+		use_item(Items.Fertilizer)
+	harvest()
+	
+if __name__ == "__main__":
+	do_a_flip()
+	
+	goto()
+	cycle(weird)
+	
+	pet_the_piggy()
+```
+### Unlocking `set_speed()`
+__solutions__
+``` python
+cycle = {North: East, East: South,
+		South: West, West: North}
+invert = {North: West, West: South,
+		South: East, East: North}
+def left_hand_rule():
+	change_hat(Hats.Gold_Hat)
+	direction = North
+	while True:
+		while not(can_move(cycle[direction])):
+			direction = cycle[direction]
+		move(cycle[direction])
+		direction = invert[direction]
+		if get_entity_type() == Entities.Treasure:
+			harvest()
+			return
+```
+### Unlocking `pyramids (II)`, `mushroom (II)`, 
+__mazes__
+``` python
+from setups import *
+from movement import *
+from solutions import *
+
+mid = get_world_size()/2
+def setup(size=1):
+	goto(mid, mid)
+	plant(Entities.Bush)
+	use_item(Items.Weird_Substance, size)
+
+def farm_treasure(quota=5000):
+	change_hat(Hats.Gold_Hat)
+	counter = 1
+	while num_items(Items.Gold) < quota:
+		collect()
+		setup(counter)
+		if counter == 1:
+			trivial_solution()
+		else:
+			left_hand_rule()
+		if counter == get_world_size()-1:
+			counter = 1
+		else:
+			counter += 1
+```
+### Unlocking `mushrooms (III)`
+__main__
+``` python
+from setups import *
+from movement import *
+from mazes import farm_treasure
+
+do_a_flip()
+
+farm_treasure(3000)
+
+pet_the_piggy()
+```
+### Unlocking `pyramids (III)`
+__main__
+``` python
+from setups import *
+from movement import *
+from mazes import farm_treasure
+
+do_a_flip()
+
+farm_treasure(7000)
+
+pet_the_piggy()
+```
+### Unlocking `Megafarm (I)`
+__main__
+``` python
+from setups import *
+from movement import *
+from mazes import farm_treasure
+from sunflowers import farm_sunflower
+
+do_a_flip()
+
+farm_sunflower()
+cycle(deplow)
+farm_treasure(2000)
+
+pet_the_piggy()
+```
+### Unlocking `Simulate`
+__main__
+``` python
+...
+do_a_flip()
+
+farm_sunflower()
+cycle(deplow)
+farm_treasure(5000)
+
+pet_the_piggy()
+```
+### Unlocking `Megafarm (II)`
+__main__
+``` python
+...
+do_a_flip()
+
+farm_treasure(8000)
 
 pet_the_piggy()
 ```
