@@ -9,6 +9,7 @@ __Table of Contents__
 4. [Polyculture](#polyculture)
 5. [Descending (Mining)](#descending)
 6. [Prospecting](#prospecting)
+7. [Road to the Megafarm](#road-to-the-megafarm)
 
 ## Building Blocks
 See [farmer01](save02\farmer01) for the chapter package.
@@ -954,6 +955,7 @@ while num_items(Items.Iron) < 200:
 
 pet_the_piggy()
 ```
+## Road to the Megafarm
 ### Unlocking `pyramids (I)`
 __bamboo__
 ``` python
@@ -1275,6 +1277,67 @@ __main__
 do_a_flip()
 
 farm_treasure(8000)
+
+pet_the_piggy()
+```
+### Unlocking `mushrooms (IV)`
+__main__
+``` python
+from setups import *
+from movement import *
+from maze_guild import host_maze
+
+change_hat(Hats.Straw_Hat)
+do_a_flip()
+
+clear()
+host_maze(1.5*10**4)
+
+pet_the_piggy()
+```
+### Unlocking `carrots (VI)`
+__main__
+``` python
+from setups import *
+from movement import *
+from poly_guild import host_poly
+
+change_hat(Hats.Straw_Hat)
+do_a_flip()
+
+cycle(collect)
+host_poly(1.56*10**5, Entities.Bush)
+
+pet_the_piggy()
+```
+### Unlocking `cactus (III)`
+__main__
+``` python
+from setups import *
+from movement import *
+from pumpkin_guild import host_pumpkin
+
+change_hat(Hats.Straw_Hat)
+do_a_flip()
+
+#cycle(harvest)
+host_pumpkin(1.2*10**5)
+
+pet_the_piggy()
+```
+### Unlocking `trees ()`
+__main__
+``` python
+from setups import *
+from movement import *
+from poly_guild import host_poly
+
+change_hat(Hats.Straw_Hat)
+do_a_flip()
+
+clear()
+host_poly(3.1*10**6, Entities.Grass)
+cycle(harvest)
 
 pet_the_piggy()
 ```
