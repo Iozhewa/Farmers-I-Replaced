@@ -1325,7 +1325,7 @@ host_pumpkin(1.2*10**5)
 
 pet_the_piggy()
 ```
-### Unlocking `trees ()`
+### Unlocking `trees (VII)`
 __main__
 ``` python
 from setups import *
@@ -1338,6 +1338,85 @@ do_a_flip()
 clear()
 host_poly(3.1*10**6, Entities.Grass)
 cycle(harvest)
+
+pet_the_piggy()
+```
+### Unlocking `watering (VII)`
+__main__
+``` python
+from setups import *
+from movement import *
+from poly_guild import host_poly
+
+change_hat(Hats.Straw_Hat)
+do_a_flip()
+
+cycle(harvest)
+host_poly(2.1*10**6, Entities.Tree)
+
+pet_the_piggy()
+```
+### Unlocking `pumpkins (IV)`, `grass (V)`
+__main__
+``` python
+from setups import *
+from movement import *
+from poly_guild import host_poly
+from sunflower_guild import host_sunflower
+
+change_hat(Hats.Straw_Hat)
+do_a_flip()
+
+#host_sunflower()
+cycle(deplow)
+host_poly(260*1*10**3, Entities.Carrot)
+
+pet_the_piggy()
+```
+### Final `pyramids` upgrade!
+__main__
+``` python
+from setups import *
+from movement import *
+from maze_guild import host_maze, guild_maze
+from sunflower_guild import host_sunflower
+
+change_hat(Hats.Straw_Hat)
+do_a_flip()
+
+cycle(deplow)
+host_maze(25*1*10**3)
+guild_maze(30*1*10**3)
+
+pet_the_piggy()
+```
+### Unlocking `rice (VIII)`
+__main__
+``` python
+from setups import *
+from movement import *
+from rice_guild import host_rice
+
+change_hat(Hats.Straw_Hat)
+do_a_flip()
+
+host_rice()
+
+pet_the_piggy()
+```
+### Unlocking `petrified pumpkins ()`
+__main__
+``` python
+from setups import *
+from movement import goto, shave
+from bamboo_guild import host_bamboo
+
+change_hat(Hats.Straw_Hat)
+do_a_flip()
+
+goto()
+shave()
+host_bamboo()
 
 pet_the_piggy()
 ```
